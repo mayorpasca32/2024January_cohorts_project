@@ -27,14 +27,14 @@ pipeline {
         
         stage('Push to Nexus Artifactory') {
             steps {
-                nexusArtifactUploader artifacts: [[artifactId: 'SampleWebApp', classifier: '', file: 'SampleWebApp/target/SampleWebApp', type: 'war']], credentialsId: 'nexusid', groupId: 'SampleWebApp', nexusUrl: '54.162.67.176:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0-SNAPSHOT'
+                nexusArtifactUploader artifacts: [[artifactId: 'SampleWebApp', classifier: '', file: 'SampleWebApp/target/SampleWebApp', type: 'war']], credentialsId: 'nexus_jenkins', groupId: 'SampleWebApp', nexusUrl: '54.162.67.176:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0-SNAPSHOT'
             }   
             
         }
         
         stage('deploy to tomcat') {
           steps {
-            deploy adapters: [tomcat9(credentialsId: 'tomcatid', path: '', url: 'http://3.83.217.175:8080/')], contextPath: 'app', war: '**/*.war'
+            deploy adapters: [tomcat9(credentialsId: 'tomcat_ID', path: '', url: 'http://3.83.217.175:8080')], contextPath: 'web', war: '**/*.war'
              
             }
             
