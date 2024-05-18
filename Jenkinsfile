@@ -27,7 +27,7 @@ pipeline {
         
         stage('Push to Nexus Artifactory') {
             steps {
-                nexusArtifactUploader artifacts: [[artifactId: 'SampleWebApp', classifier: '', file: 'SampleWebApp/target/SampleWebApp', type: 'war']], credentialsId: 'nexus_jenkins', groupId: 'SampleWebApp', nexusUrl: '54.162.67.176:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0-SNAPSHOT'
+                nexusArtifactUploader artifacts: [[artifactId: 'SampleWebApp', classifier: '', file: 'SampleWebApp/target/SampleWebApp.war', type: 'war']], credentialsId: 'nexus_jenkins', groupId: 'SampleWebApp', nexusUrl: '54.162.67.176:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0-SNAPSHOT'
             }   
             
         }
